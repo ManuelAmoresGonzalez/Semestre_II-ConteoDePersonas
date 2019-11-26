@@ -7,9 +7,9 @@
 # To read from webcam and write back out to disk:
 # python people_counter.py --prototxt mobilenet_ssd/MobileNetSSD_deploy.prototxt \
 #	--model mobilenet_ssd/MobileNetSSD_deploy.caffemodel \
-#	--output output/webcam_output.avi
+#	--output output/webcam_outppip instal dlut.
 
-# import the necessary packages
+
 from pyimagesearch.centroidtracker import CentroidTracker
 from pyimagesearch.trackableobject import TrackableObject
 from imutils.video import VideoStream
@@ -20,6 +20,7 @@ import imutils
 import time
 import dlib
 import cv2
+import telebot # Importamos la librería para enviar mesnajes por telegram
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
@@ -50,7 +51,7 @@ net = cv2.dnn.readNetFromCaffe(args["prototxt"], args["model"])
 
 # if a video path was not supplied, grab a reference to the webcam
 if not args.get("input", False):
-	print("[INFO] starting video stream...")
+	print("[INFO] starting video stream...") #################################
 	vs = VideoStream(src=0).start()
 	time.sleep(2.0)
 
@@ -115,14 +116,14 @@ while True:
 	# initialize the current status along with our list of bounding
 	# box rectangles returned by either (1) our object detector or
 	# (2) the correlation trackers
-	status = "Waiting"
+	status = "Esperando"
 	rects = []
 
 	# check to see if we should run a more computationally expensive
 	# object detection method to aid our tracker
 	if totalFrames % args["skip_frames"] == 0:
 		# set the status and initialize our new set of object trackers
-		status = "Detecting"
+		status = "Detectando"
 		trackers = []
 
 		# convert the frame to a blob and pass the blob through the
@@ -161,7 +162,7 @@ while True:
 				tracker.start_track(rgb, rect)
 
 				# add the tracker to our list of trackers so we can
-				# utilize it during skip frames
+				#utilize it during skip frames
 				trackers.append(tracker)
 
 	# otherwise, we should utilize our object *trackers* rather than
@@ -171,7 +172,7 @@ while True:
 		for tracker in trackers:
 			# set the status of our system to be 'tracking' rather
 			# than 'waiting' or 'detecting'
-			status = "Tracking"
+			status = "Ratreando"
 
 			# update the tracker and grab the updated position
 			tracker.update(rgb)
@@ -189,7 +190,8 @@ while True:
 	# draw a horizontal line in the center of the frame -- once an
 	# object crosses this line we will determine whether they were
 	# moving 'up' or 'down'
-	cv2.line(frame, (0, H // 2), (W, H // 2), (0, 0, 255), 2) #linea roja
+	#cv2.line(frame, (0, H // 2), (W, H // 2), (255, 255, 255), 1)
+	cv2.line(frame, (0, H // 2), (W, H // 2), (255, 255, 255), 1)
 
 	# use the centroid tracker to associate the (1) old object
 	# centroids with (2) the newly computed object centroids
@@ -245,16 +247,15 @@ while True:
 	# construct a tuple of information we will be displaying on the
 	# frame
 	info = [
-		("Up", totalUp),
-		("Down", totalDown),
-		("Status", status),
+		("Entrando", totalUp),
+		("Saliendo", totalDown),
 	]
 
 	# loop over the info tuples and draw them on our frame
 	for (i, (k, v)) in enumerate(info):
 		text = "{}: {}".format(k, v)
 		cv2.putText(frame, text, (10, H - ((i * 20) + 20)),
-			cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
+			cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
 
 	# check to see if we should write the frame to disk
 	if writer is not None:
@@ -275,6 +276,13 @@ while True:
 
 # stop the timer and display FPS information
 fps.stop()
+TOKEN = '1061365888:AAF3M_iCWjCyGpejUlYIEyST_gi1pkHqLyM' # Ingresamos el token del bot
+tb = telebot.TeleBot(TOKEN) # Combinamos la declaración del Token con la función de la API
+#Enviar el mensaje por telegram
+
+mensaje="Subieron: "+ str(totalUp) +"\nBajaron: "+str(totalDown)
+#tb.send_message('-326103466', mensaje)
+tb.send_message('-389991544', mensaje)
 print("[INFO] elapsed time: {:.2f}".format(fps.elapsed()))
 print("[INFO] approx. FPS: {:.2f}".format(fps.fps()))
 
