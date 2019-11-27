@@ -1,4 +1,4 @@
-# PeopleCounting
+﻿# PeopleCounting
 ***El proyecto tiene como fin automatizar el proceso del conteo de pasajeros en el transporte público mediante la implementación de la librería OpenCV***
 
 El programa ha sido ejecutado en la terminal de Anaconda y de Pycharm, para ejecutar el programa seguir el tutorial paso a paso:
@@ -16,7 +16,7 @@ El programa ha sido ejecutado en la terminal de Anaconda y de Pycharm, para ejec
 
 # ¿Cómo ejecutar el programa?
 
-*Primero se abre la terminal del sistema, para ejecutarlo es necesario posicionarse en la carpeta utilizando el comando cd y moviendo la carpeta a la terminal. Ejemplo:
+*Primero se abre la terminal del sistema, para ejecutarlo es necesario posicionarse en la carpeta utilizando el comando cd y moviendo la carpeta a la terminal. Ejemplo:*
 
 cd C:\Users\Usuario\Downloads\people-counting-opencv
 
@@ -29,5 +29,5 @@ python people_counter.py --prototxt mobilenet_ssd/MobileNetSSD_deploy.prototxt -
 
 python people_counter.py --prototxt mobilenet_ssd/MobileNetSSD_deploy.prototxt --model mobilenet_ssd/MobileNetSSD_deploy.caffemodel --input videos/escaleras.mp4 --output output/escaleras.avi
 
-Cabe mencionar que se recomienda correr el sistema desde la terminal del id utilizado para Python ya sea PyCharm, Spyder de Anaconda o su id preferido.
+Cabe mencionar que se recomienda correr el sistema desde la terminal del IDE utilizado para Python ya sea PyCharm, Spyder de Anaconda o su IDE preferido.
 
