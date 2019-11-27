@@ -1,22 +1,33 @@
 # PeopleCounting
-***El proyecto tiene como fin automatizar el proceso del conteo de pasajeros en el transporte p˙blico mediante la implementaciÛn de la librerÌa OpenCV***
+***El proyecto tiene como fin automatizar el proceso del conteo de pasajeros en el transporte p√∫blico mediante la implementaci√≥n de la librer√≠a OpenCV***
 
 El programa ha sido ejecutado en la terminal de Anaconda y de Pycharm, para ejecutar el programa seguir el tutorial paso a paso:
 
-# øCÛmo instalar las librerÌas?
-*Si al correr el programa (run, F5...) manda una excepciÛn debido a una librerÌa, abrir el CMD y utilizar el comando "pip install " seguido del nombre de la librerÌa que da error, en caso de no ser asÌ, googlear cÛmo instalar librerÌa que nos da problemas, googlear cÛmo instalar pip en caso de error por el pip*
+# ¬øC√≥mo instalar las librer√≠as?
+*Si al correr el programa (run, F5...) manda una excepci√≥n debido a una librer√≠a, abrir el CMD y utilizar el comando "pip install " seguido del nombre de la librer√≠a que da error, en caso de no ser as√≠, googlear c√≥mo instalar librer√≠a que nos da problemas, googlear c√≥mo instalar pip en caso de error por el pip*
+# Librerias que deber√°n instalarse
 
-# øCÛmo ejecutar el programa?
+* Lo primero ser√° instalar el instalador de python el cual es el pip, iniciar instalando pip en el cmd.
+* Continuamos con la librer√≠a pyimagesearch la cual ayudara en el control de elementos como los son las coordenadas para ubicar la posici√≥n y el movimiento en el que se dirige el pasajero.
+* Imutils es otra librer√≠a muy importante que ayuda en el procesamiento del video que se utilizara para procesar.
+* El numpy es una librer√≠a que ayuda a ubicar y a recorrer coordenadas, vectores y matrices en un area especifica.
+* La libreria delib es una librer√≠a encargada de lo que se llama traking, a esto se refiere con el movimiento de objetos de un area a otra.
+* Por ultimo y la mas importante es la librer√≠a opencv la cual es la encargada de procesar imagenes y visi√≥n computarizada.
 
-*Primero se abre la terminal del editor de texto preferido, para ejecutarlo es necesario posicionarse en la carpeta utilizando el comando cd y moviendo la carpeta a la terminal. Ejemplo:*
+# ¬øC√≥mo ejecutar el programa?
+
+*Primero se abre la terminal del sistema, para ejecutarlo es necesario posicionarse en la carpeta utilizando el comando cd y moviendo la carpeta a la terminal. Ejemplo:
 
 cd C:\Users\Usuario\Downloads\people-counting-opencv
 
-*Luego, para ejecturar el programa hay que realizar una serie de comandos escenciales para la ejecuciÛn del programa 
-Adem·s hay que seleccionar el video a escanear despuÈs del --input, y escoger el nombre del video despuÈs del --output. Comando a ejecutar en la terminal editando el nombre del video:*
+*Luego, para ejecturar el programa hay que realizar una serie de comandos escenciales para la ejecuci√≥n del programa 
+Adem√°s hay que seleccionar el video a escanear despu√©s del --input, y escoger el nombre del video despu√©s del --output. Comando a ejecutar en la terminal editando el nombre del video:*
 
 python people_counter.py --prototxt mobilenet_ssd/MobileNetSSD_deploy.prototxt --model mobilenet_ssd/MobileNetSSD_deploy.caffemodel --input videos/nombreDelVideoAEscanear.mp4 --output output/nombreDelVideoLuegoDeRealizarElTracking.avi
 
 *Ejemplo con un video ya existente en la carpeta videos*
 
 python people_counter.py --prototxt mobilenet_ssd/MobileNetSSD_deploy.prototxt --model mobilenet_ssd/MobileNetSSD_deploy.caffemodel --input videos/escaleras.mp4 --output output/escaleras.avi
+
+Cabe mencionar que se recomienda correr el sistema desde la terminal del id utilizado para Python ya sea PyCharm, Spyder de Anaconda o su id preferido.
+
