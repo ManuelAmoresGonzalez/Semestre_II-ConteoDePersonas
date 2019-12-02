@@ -31,3 +31,13 @@ python people_counter.py --prototxt mobilenet_ssd/MobileNetSSD_deploy.prototxt -
 
 Cabe mencionar que se recomienda correr el sistema desde la terminal del IDE utilizado para Python ya sea PyCharm, Spyder de Anaconda o su IDE preferido.
 
+**Integrantes:**
+* Manuel Amores Gonzales.
+* Warner Hurtado Laguna.
+* Brian Pérez Ávila.
+* Sebastián Rojas Vargas.
+
+Curso: Arquitectura de Computadores.
+II Semestre 2019.
+Profesor: Jorge Alfaro Velasco.
+
